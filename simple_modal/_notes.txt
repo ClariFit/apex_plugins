@@ -1,0 +1,18 @@
+http://www.ericmmartin.com/projects/simplemodal/
+
+- Attributes
+- Type: open/close
+- Region ID: id
+- opacity
+- closeHTML
+- escClose
+- closeClass 
+
+- Call Backs
+- onOpen
+- onShow
+- onClose
+
+TODO:
+- escape on close always seems active (check close attribute)
+- When I do a modal.close object is still visibile.

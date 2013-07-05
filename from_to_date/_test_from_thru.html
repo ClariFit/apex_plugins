@@ -1,0 +1,95 @@
+<html>
+<head>
+<script src="http://localhost/jquery/jquery-1.4.3.min.js" type="text/javascript"></script>
+<script src="http://localhost/jquery/jquery-ui-1.8.5.custom/js/jquery-ui-1.8.5.custom.min.js" type="text/javascript"></script>
+<script src="http://localhost/jquery/$logger_1.0.0.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="http://localhost/jquery/jquery-ui-1.8.5.custom/development-bundle/themes/base/jquery.ui.all.css">
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $.console.setLevel('log'); // TODO remove this from the code.
+  
+  $.console.group('Applying date picker to following objects'); // TODO custom message
+	$( ".datepicker" ).datepicker(
+    { 
+      //changeMonth : ($(this).attr('data-changeMonth') === undefined ? false : $(this).attr('data-changeMonth') == 'true'),
+      //changeMonth : ($(this).attr('data-changeMonth') === undefined ? false : true),
+      //changeMonth : ($(this).attr('data-changeMonth') === undefined),
+      //changeMonth : (1===2 ? false : true),
+      changeMonth : true,
+      beforeShow: function(){ 
+        var vThis = $(this),
+            maxDateId,
+            minDateId,
+            minDate,
+            maxDate;
+        $.console.group('Date Picker: beforeShow');
+        
+        //maxDateId =  vThis.attr('class').match(/\bmaxDateId:[^\s]+/i);
+        maxDateId = vThis.attr('data-maxDateId');
+        //maxDateId = (maxDateId === null ? null : maxDateId.toString().replace(/maxDateId:/i, ''));
+        $.console.log('maxDateId', maxDateId);
+        $.console.log('using dataset', vThis.dataset)
+        
+        //minDateId =  vThis.attr('class').match(/\bminDateId:[^\s]+/i);
+        minDateId = vThis.attr('data-minDateId');
+        //minDateId = (minDateId === null ? null : minDateId.toString().replace(/minDateId:/i,''));
+        $.console.log('minDateId', minDateId);
+        
+        minDate = (minDateId === undefined ? null : $("#" + minDateId).datepicker("getDate"));
+        $.console.log('mindate',minDate);
+        maxDate = (maxDateId === undefined ? null : $("#" + maxDateId).datepicker("getDate"));
+        $.console.log('maxdate',maxDate);
+        
+        $.console.groupEnd();
+       
+        return {
+          minDate: minDate,
+          maxDate: maxDate
+        }; //return
+
+      }// beforeShow
+    }//datepicker
+  ).log(); 
+  $.console.groupEnd();
+});
+
+
+
+</script>  
+</head>
+
+<body>
+
+<input type="text" id="fromdate" class="datepicker" data-maxDateId="thrudate" data-changeMonth="true">
+
+(( |;)+|^)test:([^\s])+
+
+
+http://www.w3schools.com/jsref/jsref_obj_regexp.asp
+
+
+var x = "datepicker test:s hasDatepicker";
+x.match(/\btest:[^\s]+/);
+var y = x.match(/\btest:[^\s]+/).toString(); ** Works **
+console.log(y);
+
+if (y===null)
+  console.log('hello');
+else 
+  console.log('jello');
+
+<br>
+<br>
+<br>
+<input type="text" id="thrudate" class="datepicker" data-minDateId="fromdate" >
+
+Things we're going to need to do:<br>
+- Custom classes for datepicker so not triggered by APEX
+  - Perhaps com.clarifit.datepicker.fromto
+- Compare the other features that the calendar picker currently has
+
+</body>
+</html>

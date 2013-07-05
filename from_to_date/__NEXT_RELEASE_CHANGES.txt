@@ -1,0 +1,37 @@
+
+Implemented in 1.0.1
+
+- Add an absolute min/max dates
+- IE 7/8/9 Fix
+
+Dear,
+ 
+I have recently downloaded and tried the Clarifit from to datepicker. I must say I really like the concept. I am currently working with a client that only uses IE8. I develop in Chrome, but test in IE, after testing the folowing error popped up: "Expected identifier String or Number". In IE this usually means there is a "," somewhere, where it shouldn't be. I found two in the code:
+ 
+One at      
+showOn: 'button'
+      },
+    datePickerType: '', //from or to
+  },
+So this becomes:
+      showOn: 'button'
+      },
+    datePickerType: '' //from or to
+  },
+And one at:
+    uiw._values = {
+      shortYearCutoff: 30, //roll over year
+    };
+becomes:
+    uiw._values = {shortYearCutoff: 30 //roll over year
+    };
+ 
+After editing these two out, it ran withouth any further problems.
+ 
+Perhaps you were already aware of this problem, but if not I hope this information will help you if you decide to release another version.
+And again, thank you for releasing such a handy plug-in.
+ 
+Regards,
+
+Joni Vandenberghe
+Oracle Consultant

@@ -1,0 +1,5 @@
+Example: http://apex.oracle.com/pls/apex/f?p=45587:400
+
+This file contains 2 plugins. One is to close the nodal window and the other is to open the modal window
+
+Additional help: apex@clarifit.com
